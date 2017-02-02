@@ -1,4 +1,4 @@
-<div class="widget panel panel-default">
+<div class="widget panel panel-success">
   <div class="panel-heading">
     <h3 id="ratingHeading" class="panel-title">{{RateMessage}}</h3>
   </div>
@@ -10,27 +10,29 @@
 	      <label for="emailAddressField">Enter email address:</label>
 		  <div class="input-group mb-2 mr-sm-2 mb-sm-0">
 		    <div class="input-group-addon">@</div>
-		    <input [(ngModel)]="emailAddress" name="emailAddress" type="text" class="form-control" id="emailAddressField" placeholder="Emaill address">
+		    <input [(ngModel)]="emailAddress" name="emailAddress" type="email" class="form-control" id="emailAddressField" placeholder="Emaill address">
 		  </div>
 	  	</div>
 		<div class="form-group">
 		    <label for="exampleTextarea">So <span class="bold">{{substring(emailAddress)}}</span> , what do you like about our website and what would you like us to improve ?</label>
-		    <textarea class="form-control" id="exampleTextarea" rows="3"></textarea>
+		    <textarea [(ngModel)]="userFeedback" name="userFeedback" class="form-control" id="exampleTextarea" rows="3"></textarea>
 		</div>
+		<div class="form-group errors">{{formErrors.message}}</div>
 		<div class="form-group">
 			<div class="ratingStarts">
-				<h3>Please click on a star to rate us:</h3>
+				<h3>Please click on a star to rate us: <span id="ratingValue" *ngIf="ratingValue">( {{ratingValue}} )</span></h3>
 				<div class="pull-left">
-	  				<i class="glyphicon glyphicon-star-empty"></i>
-	  				<i class="glyphicon glyphicon-star-empty"></i>
-	  				<i class="glyphicon glyphicon-star-empty"></i>
-	  				<i class="glyphicon glyphicon-star-empty"></i>
-	  				<i class="glyphicon glyphicon-star-empty"></i>
+	  				<i (click)="rateService($event)" id="1" class="glyphicon stars glyphicon-star-empty"></i>
+	  				<i (click)="rateService($event)" id="2" class="glyphicon stars glyphicon-star-empty"></i>
+	  				<i (click)="rateService($event)" id="3" class="glyphicon stars glyphicon-star-empty"></i>
+	  				<i (click)="rateService($event)" id="4" class="glyphicon stars glyphicon-star-empty"></i>
+	  				<i (click)="rateService($event)" id="5" class="glyphicon stars glyphicon-star-empty"></i>
 	  			</div>
   			</div>
 		</div>
-	  <button type="submit" class="pull-right btn btn-primary">Submit</button>
+	  <button (click)="sendRatingData()" type="submit" class="pull-right btn btn-primary">Submit</button>
 	</form>
+
     <form >
 	</form>
   </div>
