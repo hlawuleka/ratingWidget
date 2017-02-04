@@ -1,40 +1,45 @@
 import { Component } from '@angular/core';
 
+import { ModalComponent } from './modal/modal.component';
+
 import { RatingService } from './app.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
+  providers: [RatingService]
 })
 export class AppComponent {
  	
 	//@Member properties
  	btnText:string 	   = 'Rate';
- 	RateMessage:string = 'Thanks for visiting our page, would you please tell us a bit about your experience ?';
- 	isFromOpen:boolean = false;
+ 	platform:string    = 'site';
+ 	RateMessage:string = 'Hey there, thanks for visiting our page, would you please tell us a bit about your experience on our '+this.platform;
+ 	isFormOpen:boolean = true;
  	ratingValue:number = 0;
+ 	ratingComplete:boolean = true;
 
  	//@Member Input fields
  	emailAddress:string = '';
- 	userFeedback:string = '';
+ 	userFeedback:string = 'I love your website because ';
  	
  	formErrors = {
  		message: ''
  	};
 
- 	toSendToServer = {
- 		email: '',
- 		message:'',
- 		ratingValue:0
- 	};
-
+ 	//@Server updated properties
+ 	ratingResponse:any = {
+ 		title: '',
+ 		message: '',
+ 		status: true
+ 	}
  	constructor(private ratingService:RatingService){
 
  	}
  	//@member functions
  	openRatingForm () :boolean{
- 		return this.isFromOpen = !this.isFromOpen;
+ 		return this.isFormOpen = !this.isFormOpen;
  	}
 
  	substring (val) {
@@ -74,12 +79,21 @@ export class AppComponent {
  			
  			this.formErrors.message = '';
 
- 			this.toSendToServer.email = emailAddress;
- 			this.toSendToServer.message = userFeedback;
- 			this.toSendToServer.ratingValue = this.ratingValue;
+ 			this.ratingService.sendRating({
+ 				'email'   : emailAddress,
+ 				'message' : userFeedback,
+ 				'rating'  : this.ratingValue
+ 			}).subscribe(
+				data => {
+					this.ratingResponse.title   = data.title;
+					this.ratingResponse.message = data.message;
+					this.ratingResponse.status = data.status;
 
- 			this.ratingService.sendRating(this.toSendToServer).subscribe(
-				data => console.log(data),
+					if(this.ratingResponse.status) {
+						this.ratingComplete = false;
+						document.getElementById('showPopup').click();
+					}
+				},
 				error => console.log(error)
 			);
  		}

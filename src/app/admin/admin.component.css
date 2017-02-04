@@ -1,0 +1,71 @@
+*{font-family: 'Open Sans Condensed'}
+.noContent p {font-size: 17px;}
+.key{color:#069c4c;margin-left:14%;}
+header{
+	border-bottom:1px solid #d3d3d3;
+}
+header h1{
+	font-size: 2.5vw;
+}
+.ratingsGroup, .ratingsGroup ul, .ratingsGroup li {
+	transition:all 0.66s;
+}
+.ratingsGroup:first-of-type{
+	margin-bottom:15px;
+}
+.Read {
+	opacity: 0.75;
+
+}
+.Read .readComponent{
+	margin:20px 0;
+	border:1px solid #eee;
+	border-bottom:none;
+}
+.Read:hover {
+	opacity: 1;
+}
+.ratingsGroup {
+	width:100%;
+}
+.ratingsGroup h2{
+	color:#39f;
+	font-weight: 300;
+	font-size: 22px;
+	margin:10px;
+}
+.ratingsGroup  ul {
+	border-bottom:1px solid #f6f6f6;
+}
+.ratingsGroup  ul:hover {
+	background-color: rgba(77, 77, 77, 0.1);
+}
+.ratingsGroup  ul li {
+	list-style: none;
+	padding:15px 25px;
+	display: inline-block;
+	font-size: 17px;
+}
+.ratingsGroup  ul li.emailAddress {
+	min-width: 15%;
+}
+.ratingsGroup  ul li.message {
+	max-width: 85%;
+}
+.ratingsGroup  ul li.ratingVal {
+	font-weight: 900;
+	color:#069c4c;
+}
+.ratingsGroup  ul li.read a,
+.ratingsGroup  ul li.read a:hover {
+	color:rgb(160, 5, 16);
+	font-weight: 900;
+	cursor: pointer;
+	text-decoration: none;
+}
+
+@media screen and (max-width: 840px) {
+	header h1{
+		font-size: 4.5vw;
+	}
+}

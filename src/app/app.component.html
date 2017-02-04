@@ -1,39 +1,38 @@
-<div class="widget panel panel-success">
-  <div class="panel-heading">
-    <h3 id="ratingHeading" class="panel-title">{{RateMessage}}</h3>
-  </div>
-  <div class="panel-body">
-    <button *ngIf="!!isFromOpen" (click)="openRatingForm()" class="btn btn-primary">{{btnText}}</button>
-    
-    <form *ngIf="!isFromOpen" class="form-block">
-	    <div class="form-group">
-	      <label for="emailAddressField">Enter email address:</label>
-		  <div class="input-group mb-2 mr-sm-2 mb-sm-0">
-		    <div class="input-group-addon">@</div>
-		    <input [(ngModel)]="emailAddress" name="emailAddress" type="email" class="form-control" id="emailAddressField" placeholder="Emaill address">
-		  </div>
-	  	</div>
-		<div class="form-group">
-		    <label for="exampleTextarea">So <span class="bold">{{substring(emailAddress)}}</span> , what do you like about our website and what would you like us to improve ?</label>
-		    <textarea [(ngModel)]="userFeedback" name="userFeedback" class="form-control" id="exampleTextarea" rows="3"></textarea>
-		</div>
-		<div class="form-group errors">{{formErrors.message}}</div>
-		<div class="form-group">
-			<div class="ratingStarts">
-				<h3>Please click on a star to rate us: <span id="ratingValue" *ngIf="ratingValue">( {{ratingValue}} )</span></h3>
-				<div class="pull-left">
-	  				<i (click)="rateService($event)" id="1" class="glyphicon stars glyphicon-star-empty"></i>
-	  				<i (click)="rateService($event)" id="2" class="glyphicon stars glyphicon-star-empty"></i>
-	  				<i (click)="rateService($event)" id="3" class="glyphicon stars glyphicon-star-empty"></i>
-	  				<i (click)="rateService($event)" id="4" class="glyphicon stars glyphicon-star-empty"></i>
-	  				<i (click)="rateService($event)" id="5" class="glyphicon stars glyphicon-star-empty"></i>
+<div>
+  <div class="well widget panel panel-success" *ngIf="ratingComplete">
+	  <div class="panel-heading">
+	    <h3 id="ratingHeading" class="panel-title">{{RateMessage}}</h3>
+	  </div>
+	  <div class="panel-body">
+	    <button *ngIf="!!isFormOpen" (click)="openRatingForm()" id="openRatingForm" class="btn btn-default">{{btnText}}<i id="icon" class="glyphicon stars glyphicon-star-empty"></i></button>
+	    <form *ngIf="!isFormOpen" class="form-block">
+		    <div class="form-group">
+		      <label for="emailAddressField">Enter email address:</label>
+			  <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+			    <div class="input-group-addon">@</div>
+			    <input required [(ngModel)]="emailAddress" name="emailAddress" type="email" class="form-control" id="emailAddressField" placeholder="Emaill address">
+			  </div>
+		  	</div>
+			<div class="form-group">
+			    <label for="exampleTextarea">So <span class="bold">{{substring(emailAddress)}}</span> , what do you like about our website and what would you like us to improve ?</label>
+			    <textarea maxlength="500" required [(ngModel)]="userFeedback" name="userFeedback" class="form-control" id="exampleTextarea" rows="3" value="Test Message"></textarea>
+			</div>
+			<div class="form-group errors">{{formErrors.message}}</div>
+			<div class="form-group">
+				<div class="ratingStarts">
+					<h3>Please click on a star to rate us: <span id="ratingValue" *ngIf="ratingValue">( {{ratingValue}} )</span></h3>
+					<div class="pull-left">
+		  				<i (click)="rateService($event)" id="1" class="glyphicon stars glyphicon-star-empty"></i>
+		  				<i (click)="rateService($event)" id="2" class="glyphicon stars glyphicon-star-empty"></i>
+		  				<i (click)="rateService($event)" id="3" class="glyphicon stars glyphicon-star-empty"></i>
+		  				<i (click)="rateService($event)" id="4" class="glyphicon stars glyphicon-star-empty"></i>
+		  				<i (click)="rateService($event)" id="5" class="glyphicon stars glyphicon-star-empty"></i>
+		  			</div>
 	  			</div>
-  			</div>
-		</div>
-	  <button (click)="sendRatingData()" type="submit" class="pull-right btn btn-primary">Submit</button>
-	</form>
-
-    <form >
-	</form>
+			</div>
+		  <button (click)="sendRatingData()" type="submit" class="pull-right btn btn-primary">Submit</button>
+		</form>
+	  </div>
   </div>
+ <modal-component [ratingResponse]="ratingResponse"></modal-component>
 </div>
