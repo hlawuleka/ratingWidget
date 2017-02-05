@@ -20,10 +20,15 @@ export class RatingsAdminComponent implements OnInit {
 	 	this.ratingService.getRatings().subscribe((response)=> {
 	 		
 	 		for(let i = 0;i<response.length;i++) {
-	 			if(!response[i].RatingRead) {
-	 				this.ratingsContentNotRead.push(response[i]);
-	 			} else {
-	 				this.ratingsContentRead.push(response[i]);
+	 			try {
+		 			response[i].id = response[i]._id;
+		 			if(!response[i].RatingRead) {
+		 				this.ratingsContentNotRead.push(response[i]);
+		 			} else {
+		 				this.ratingsContentRead.push(response[i]);
+		 			}
+	 			}catch(e) {
+	 				console.log(e);
 	 			}
 	 		}
 
