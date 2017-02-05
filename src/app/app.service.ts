@@ -8,7 +8,8 @@ import 'rxjs/Rx';
 @Injectable()
 export class RatingService {
 	headers = new Headers({'Content-type':'application/json'});
-	url:string = 'http://localhost:3000/ratings';
+	// url:string = 'http://localhost:3000/ratings';
+	url:string = 'https://nodejshlawuleka.herokuapp.com/ratings/';
 	constructor(private http:Http){}
 	
 
