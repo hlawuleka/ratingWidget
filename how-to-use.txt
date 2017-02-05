@@ -1,0 +1,9 @@
+After cloning or downloading this software:
+
+The following conditions are assumed:
+1. You have node and npm installed on your machine / plarform where you'll be running this software on
+2. You understand the basics of working with a node project
+
+Please go to the root of the project and run the command "npm start" or "ng serve" (if you have the Angular cli installed) and open "http://localhost:4200/"
+
+FOR VIEWING AND MARKING MESSAGES AS READ PLEASE NAVIGATE TO "http://localhost:4200/admin"

@@ -98,7 +98,7 @@ export class AppComponent {
 			);
  		}
  		else{
- 			 this.formErrors.message = 'Please make sure you enter a valid email address and click a star.';
+ 			 this.formErrors.message = 'Please make sure you enter a valid email address, type in your message and click a star.';
  		}
  	}
 }

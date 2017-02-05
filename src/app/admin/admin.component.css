@@ -47,14 +47,15 @@ header h1{
 	font-size: 17px;
 }
 .ratingsGroup  ul li.emailAddress {
-	min-width: 15%;
+	min-width: 20%;
 }
 .ratingsGroup  ul li.message {
-	max-width: 85%;
+	max-width: 75%;
 }
 .ratingsGroup  ul li.ratingVal {
 	font-weight: 900;
 	color:#069c4c;
+	min-width: 20%;
 }
 .ratingsGroup  ul li.read a,
 .ratingsGroup  ul li.read a:hover {
@@ -65,6 +66,12 @@ header h1{
 }
 
 @media screen and (max-width: 840px) {
+	.ratingsGroup  ul li.emailAddress,
+	.ratingsGroup  ul li.message,
+	.ratingsGroup  ul li.ratingVal {
+		max-width: initial;
+		width:auto;
+	}
 	header h1{
 		font-size: 4.5vw;
 	}
