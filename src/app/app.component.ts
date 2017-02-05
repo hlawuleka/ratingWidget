@@ -19,7 +19,7 @@ export class AppComponent {
  	isFormOpen:boolean = true;
  	ratingValue:number = 0;
  	ratingComplete:boolean = true;
-
+ 	waiting:boolean =  false;
  	//@Member Input fields
  	emailAddress:string = '';
  	userFeedback:string = 'I love your website because ';
@@ -78,7 +78,7 @@ export class AppComponent {
  		if(emailAddress.match(emailRegExp) && userFeedback.length > 0 && this.ratingValue > 0) {
  			
  			this.formErrors.message = '';
-
+ 			this.waiting = true;
  			this.ratingService.sendRating({
  				'email'   : emailAddress,
  				'message' : userFeedback,

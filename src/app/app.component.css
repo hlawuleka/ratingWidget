@@ -3,7 +3,7 @@
 i#icon{top: 4px !important}
 #openRatingForm{font-size: 24px;letter-spacing: 4px}
 .bold{font-weight: bold;color:#000;font-style: italic;}
-.errors {color:red;}
+.feedback {color:red;font-size: 16px}
 .form-group label, .ratingStarts h3 {font-size: 19px;}
 #emailAddressField{padding:20px;}
 #exampleTextarea{resize: none;height:auto;min-height: 189px;}
