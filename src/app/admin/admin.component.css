@@ -7,7 +7,7 @@ header{
 	border-bottom:1px solid #d3d3d3;
 }
 header h1{
-	font-size: 2.5vw;
+	font-size: 2.2vw;
 }
 .ratingsGroup, .ratingsGroup ul, .ratingsGroup li {
 	transition:all 0.66s;
@@ -72,6 +72,9 @@ header h1{
 #average-rating-p span{
 	font-weight: bold;
 	float:right;
+}
+.feedback p{
+	font-size: 19px;
 }
 @media screen and (max-width: 840px) {
 	.ratingsGroup  ul li.emailAddress,
