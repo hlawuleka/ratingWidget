@@ -1,6 +1,7 @@
 <div class="offWidget">
   	<a id="modalViewRatings"  routerLink="/home" routerLinkActive="active">Home</a>
 </div>
+<div class="form-group feedback"><p class="alert alert-info" role="alert"*ngIf="ratingsContentNotRead.length == 0 && ratingsContentRead.length == 0">Please be patient while the system loads the content for you...</p></div>
 <header>
 	<h1 *ngIf="hasContent">View your ratings below 	 <span class="key">#</span> = Rating value<span class="pull-right">( <b>{{ratingsContentNotRead.length+ratingsContentRead.length}} </b>)</span>
 	</h1><h1 *ngIf="!hasContent">Hey there, you have no ratings at the moment , keep checking. 	<span class="pull-right">( <b>0</b>)</span></h1>
