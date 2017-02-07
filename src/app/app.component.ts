@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-
+import { Component, OnInit } from '@angular/core';
+import { Title }     from '@angular/platform-browser';
 import { ModalComponent } from './modal/modal.component';
 
 import { RatingService } from './app.service';
@@ -10,7 +10,7 @@ import { RatingService } from './app.service';
   styleUrls: ['./app.component.css'],
   providers: [RatingService]
 })
-export class AppComponent {
+export class AppComponent implements OnInit{
  	
 	//@Member properties
  	btnText:string 	   = 'Rate';
@@ -20,6 +20,7 @@ export class AppComponent {
  	ratingValue:number = 0;
  	ratingComplete:boolean = true;
  	waiting:boolean =  false;
+ 	AppTitle:string = "Home - Rating Widget -By Hlawuleka Maswanganyi";
  	//@Member Input fields
  	emailAddress:string = '';
  	userFeedback:string = 'I love your website because ';
@@ -34,7 +35,11 @@ export class AppComponent {
  		message: '',
  		status: true
  	}
- 	constructor(private ratingService:RatingService){
+
+  	ngOnInit() {
+  		this.titleService.setTitle(this.AppTitle);
+  	}
+ 	constructor(private ratingService:RatingService,private titleService: Title){
 
  	}
  	//@member functions

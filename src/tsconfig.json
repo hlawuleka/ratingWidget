@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "baseUrl": "",
+    "baseUrl": "angular2.ratingapp",
     "declaration": false,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,

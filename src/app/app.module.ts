@@ -1,4 +1,4 @@
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule, Title } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
@@ -40,7 +40,7 @@ const RatingAppRoutes: Routes = [
     FormsModule,
     HttpModule
   ],
-  providers: [{provide: LocationStrategy, useClass: HashLocationStrategy}],
+  providers: [Title,{provide: LocationStrategy, useClass: HashLocationStrategy}],
   bootstrap: [EntryComponent]
 })
 export class AppModule { }

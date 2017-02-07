@@ -1,4 +1,6 @@
 *{font-family: 'Open Sans Condensed'}
+
+"Helvetica Neue",Helvetica,Arial,sans-serif
 .noContent p {font-size: 17px;}
 .key{color:#069c4c;margin-left:14%;}
 header{
@@ -64,7 +66,13 @@ header h1{
 	cursor: pointer;
 	text-decoration: none;
 }
-
+#average-rating-p{
+	font-size: 20px;
+}
+#average-rating-p span{
+	font-weight: bold;
+	float:right;
+}
 @media screen and (max-width: 840px) {
 	.ratingsGroup  ul li.emailAddress,
 	.ratingsGroup  ul li.message,

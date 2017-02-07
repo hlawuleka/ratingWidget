@@ -1,5 +1,4 @@
-import { Component } from '@angular/core';
-
+import { Component, OnInit } from '@angular/core';
 import { RatingService } from './app.service';
 
 @Component({
@@ -7,4 +6,4 @@ import { RatingService } from './app.service';
   templateUrl: './entry.component.html',
   providers: [RatingService]
 })
-export class EntryComponent {}
+export class EntryComponent{}

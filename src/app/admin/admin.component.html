@@ -1,30 +1,37 @@
 <div class="offWidget">
   	<a id="modalViewRatings"  routerLink="/home" routerLinkActive="active">Home</a>
 </div>
-<div class="form-group feedback"><p class="alert alert-info" role="alert"*ngIf="ratingsContentNotRead.length == 0 && ratingsContentRead.length == 0">Please be patient while the system loads the content for you...</p></div>
-<header>
-	<h1 *ngIf="hasContent">View your ratings below 	 <span class="key">#</span> = Rating value<span class="pull-right">( <b>{{ratingsContentNotRead.length+ratingsContentRead.length}} </b>)</span>
-	</h1><h1 *ngIf="!hasContent">Hey there, you have no ratings at the moment , keep checking. 	<span class="pull-right">( <b>0</b>)</span></h1>
-</header>
-<div *ngIf="hasContent" class="content">
-	<div *ngIf="ratingsContentNotRead.length" class="ratingsGroup noRead">
-		<h2>Unread</h2>
-		<ul *ngFor="let rating of ratingsContentNotRead">
-			<li class="emailAddress">{{rating.email}}</li>
-			<li class="ratingVal">{{rating.rating}}</li>
-			<li class="message">{{rating.message}}</li>
-			<li class="read pull-right"><a href="#" (click)="messageRead(rating.id, $event)">Mark As Read</a></li>
-		</ul>
-	</div>
-	<div *ngIf="ratingsContentRead.length" class="ratingsGroup Read">
-		<h2>Read</h2>
-		<div class="readComponent">
-			<ul *ngFor="let rating of ratingsContentRead">
+<div class="form-group feedback"><p class="alert alert-info" role="alert"*ngIf="!pageReady">Please be patient while the system loads the content for you...</p></div>
+<div *ngIf="pageReady">
+	<header>
+		<h1 *ngIf="hasContent">View your ratings below 	 <span class="key">#</span> = Rating value<span class="pull-right">( <b>{{ratingsContentNotRead.length+ratingsContentRead.length}} </b>)</span>
+		</h1><h1 *ngIf="!hasContent">Hey there, you have no ratings at the moment , keep checking. 	<span class="pull-right">( <b>0</b>)</span></h1>
+	</header>
+	<div *ngIf="hasContent" class="content">
+		<div *ngIf="ratingsContentNotRead.length" class="ratingsGroup noRead">
+			<h2>Unread ({{notRead}})</h2>
+			<ul *ngFor="let rating of ratingsContentNotRead">
 				<li class="emailAddress">{{rating.email}}</li>
 				<li class="ratingVal">{{rating.rating}}</li>
 				<li class="message">{{rating.message}}</li>
-				<li class="pull-right">Read</li>
+				<li class="read pull-right"><a href="#" (click)="messageRead(rating.id, $event)">Mark As Read</a></li>
 			</ul>
+		</div>
+		<div *ngIf="ratingsContentRead.length" class="ratingsGroup Read">
+			<h2>Read ({{read}})</h2>
+			<div class="readComponent">
+				<ul *ngFor="let rating of ratingsContentRead">
+					<li class="emailAddress">{{rating.email}}</li>
+					<li class="ratingVal">{{rating.rating}}</li>
+					<li class="message">{{rating.message}}</li>
+					<li class="pull-right">Read</li>
+				</ul>
+			</div>
+		</div>
+		<div class="panel">
+			<div class="panel-body">
+				<p id="average-rating-p">Average rating  : <span>{{averageRating}}</span></p>
+			</div>
 		</div>
 	</div>
 </div>
