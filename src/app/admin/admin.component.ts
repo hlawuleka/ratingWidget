@@ -27,7 +27,7 @@ export class RatingsAdminComponent implements OnInit {
 
 	 		for(let i = 0;i<response.length;i++) {
 	 			try {
-		 			response[i].id = response[i]._id;
+		 			response[i].id = response[i]._id || response[i].id;
 		 			if(!response[i].RatingRead) {
 		 				this.ratingsContentNotRead.push(response[i]);
 		 			} else {
@@ -53,29 +53,36 @@ export class RatingsAdminComponent implements OnInit {
  	}
 
  	messageRead(id, evt) {
+		this.markRating(id, evt, 1, this.ratingsContentRead,this.ratingsContentNotRead);
+ 	}
 
+ 	unRead(id, evt) {
+		this.markRating(id, evt, 0, this.ratingsContentNotRead, this.ratingsContentRead);
+ 	}
+
+ 	markRating(id, evt, shiftType, undreadArray, readArray) {
  		evt.preventDefault();
-
- 		this.ratingService.updateRating(id).subscribe(
-			data => {
-				if(data.success) {
-					let tmpContent = this.ratingsContentNotRead;
+ 		let tmpContent = readArray;
 					
-					for(let x = 0;x<tmpContent.length;x++) {
-						if(tmpContent[x].id == id) {
+		for(let x = 0;x<tmpContent.length;x++) {
+			if(tmpContent[x].id == id) {
 
-							//Map unread element and stack it to the read array before deleting it
-							this.ratingsContentRead.unshift(this.ratingsContentNotRead[x]);
-							
-							//Instant removal of the clicked item
-							this.ratingsContentNotRead.splice(x, 1);
+				//Map read element and stack it to the unread array before deleting it
+				undreadArray.push(readArray[x]);
+				
+				//Instant removal of the clicked item
+				readArray.splice(x, 1);
 
-							this.notRead = this.ratingsContentNotRead.length;
- 							this.read    = this.ratingsContentRead.length;
+			}
+		}
 
-						}
-					}
+		this.notRead = shiftType != 1 ? undreadArray.length : tmpContent.length;
+		this.read = shiftType == 1 ? undreadArray.length : tmpContent.length;
 
+ 		this.ratingService.updateRating(id, shiftType).subscribe(
+			data => {
+				if(!data.success) {
+					console.log('Error occured while updating content.');
 				}
 			},
 			error => console.log(error)

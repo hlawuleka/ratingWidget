@@ -26,8 +26,9 @@ export class RatingService {
 	        }).
 		    catch((response:Response)=>Observable.throw(response));
 	}
-	updateRating(id){
-		return this.http.patch(this.url+'/'+id, {'id':id}).
+	updateRating(id, type){
+		console.log(id, type);
+		return this.http.put(this.url+'/'+id+'/'+type, {'id':id}).
 		    map((response: Response)=>response.json()).
 		    catch((response:Response)=>Observable.throw(response));
 	}

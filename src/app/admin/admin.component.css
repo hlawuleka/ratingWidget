@@ -24,6 +24,10 @@ header h1{
 	border:1px solid #eee;
 	border-bottom:none;
 }
+.readComponent ul,
+.noRead ul {
+	cursor:pointer;
+}
 .Read:hover {
 	opacity: 1;
 }
@@ -72,6 +76,7 @@ header h1{
 #average-rating-p span{
 	font-weight: bold;
 	float:right;
+	clear:both;
 }
 .feedback p{
 	font-size: 19px;
@@ -82,6 +87,13 @@ header h1{
 	.ratingsGroup  ul li.ratingVal {
 		max-width: initial;
 		width:auto;
+	}
+	.ratingsGroup  ul li.ratingVal {
+		float:right;
+	}
+	.ratingsGroup  ul li.read,
+	.ratingsGroup  ul li.unread{
+		float:none !important;
 	}
 	header h1{
 		font-size: 4.5vw;

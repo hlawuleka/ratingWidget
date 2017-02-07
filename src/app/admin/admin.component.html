@@ -10,21 +10,21 @@
 	<div *ngIf="hasContent" class="content">
 		<div *ngIf="ratingsContentNotRead.length" class="ratingsGroup noRead">
 			<h2>Unread ({{notRead}})</h2>
-			<ul *ngFor="let rating of ratingsContentNotRead">
+			<ul (click)="messageRead(rating.id, $event)" *ngFor="let rating of ratingsContentNotRead">
 				<li class="emailAddress">{{rating.email}}</li>
 				<li class="ratingVal">{{rating.rating}}</li>
 				<li class="message">{{rating.message}}</li>
-				<li class="read pull-right"><a href="#" (click)="messageRead(rating.id, $event)">Mark As Read</a></li>
+				<li class="read pull-right"><a href="#">Mark As Read</a></li>
 			</ul>
 		</div>
 		<div *ngIf="ratingsContentRead.length" class="ratingsGroup Read">
 			<h2>Read ({{read}})</h2>
 			<div class="readComponent">
-				<ul *ngFor="let rating of ratingsContentRead">
+				<ul (click)="unRead(rating.id, $event)" *ngFor="let rating of ratingsContentRead">
 					<li class="emailAddress">{{rating.email}}</li>
 					<li class="ratingVal">{{rating.rating}}</li>
 					<li class="message">{{rating.message}}</li>
-					<li class="pull-right">Read</li>
+					<li class="unread pull-right">Read</li>
 				</ul>
 			</div>
 		</div>
