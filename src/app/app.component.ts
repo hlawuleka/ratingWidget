@@ -99,7 +99,16 @@ export class AppComponent implements OnInit{
 						document.getElementById('showPopup').click();
 					}
 				},
-				error => console.log(error)
+				error => {
+					this.ratingResponse.title   = error.title;
+					this.ratingResponse.message = error.message;
+					this.ratingResponse.status = error.status;
+					
+					if(!this.ratingResponse.status) {
+						this.ratingComplete = false;
+						document.getElementById('showPopup').click();
+					}
+				}
 			);
  		}
  		else{
