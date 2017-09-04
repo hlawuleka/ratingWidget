@@ -8,13 +8,13 @@ import { Component } from '@angular/core';
 export class AppComponent {
  	btnText:string 	   = 'Rate';
  	RateMessage:string = 'Thanks for visiting our page, would you please tell us a bit about your experience ?';
- 	isFromOpen:boolean = false;
+ 	isFormOpen:boolean = false;
 
  	//@Input fields
  	emailAddress:string = '';
 
  	openRatingForm():boolean{
- 		return this.isFromOpen = !this.isFromOpen;
+ 		return this.isFormOpen = !this.isFormOpen;
  	}
 
  	substring (val) {
