@@ -3,9 +3,9 @@
     <h3 id="ratingHeading" class="panel-title">{{RateMessage}}</h3>
   </div>
   <div class="panel-body">
-    <button *ngIf="!!isFromOpen" (click)="openRatingForm()" class="btn btn-primary">{{btnText}}</button>
+    <button *ngIf="!!isFormOpen" (click)="openRatingForm()" class="btn btn-primary">{{btnText}}</button>
     
-    <form *ngIf="!isFromOpen" class="form-block">
+    <form *ngIf="!isFormOpen" class="form-block">
 	    <div class="form-group">
 	      <label for="emailAddressField">Enter email address:</label>
 		  <div class="input-group mb-2 mr-sm-2 mb-sm-0">
